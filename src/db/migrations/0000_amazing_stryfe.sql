@@ -1,5 +1,5 @@
 CREATE TYPE "public"."account_status" AS ENUM('active', 'suspended', 'deactivated', 'shadowbanned');--> statement-breakpoint
-CREATE TABLE "users" (
+CREATE TABLE "usersTable" (
 	"id" bigserial PRIMARY KEY NOT NULL,
 	"username" varchar(32) NOT NULL,
 	"name" varchar(32) NOT NULL,
@@ -14,8 +14,8 @@ CREATE TABLE "users" (
 	"account_status" "account_status" DEFAULT 'active' NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now(),
 	"updated_at" timestamp with time zone DEFAULT now(),
-	CONSTRAINT "users_username_unique" UNIQUE("username")
+	CONSTRAINT "usersTable_username_unique" UNIQUE("username")
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX "username_idx" ON "users" USING btree ("username");--> statement-breakpoint
-CREATE UNIQUE INDEX "emaid_idx" ON "users" USING btree ("email");
+CREATE UNIQUE INDEX "username_idx" ON "usersTable" USING btree ("username");--> statement-breakpoint
+CREATE UNIQUE INDEX "emaid_idx" ON "usersTable" USING btree ("email");

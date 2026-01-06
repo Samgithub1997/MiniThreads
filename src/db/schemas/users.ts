@@ -16,7 +16,7 @@ export const accountStatusEnum = pgEnum("account_status", [
   "shadowbanned",
 ]);
 
-export const users = pgTable(
+export const usersTable = pgTable(
   "users",
   {
     id: bigserial("id", { mode: "bigint" }).primaryKey(),
