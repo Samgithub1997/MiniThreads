@@ -70,37 +70,41 @@ authRouter.post(
     const passwordHash = password;
 
     const newUser = await db.transaction(async (transaction) => {
-      const userExists = await transaction
-        .select()
-        .from(usersTable)
-        .where(
-          or(eq(usersTable.email, email), eq(usersTable.username, username))
-        )
-        .limit(1);
+      try {
+        const userExists = await transaction
+          .select()
+          .from(usersTable)
+          .where(
+            or(eq(usersTable.email, email), eq(usersTable.username, username))
+          )
+          .limit(1);
 
-      if (userExists.length > 0) {
-        throw new HttpError(409, "User already exists", null);
+        if (userExists.length > 0) {
+          throw new HttpError(409, "User already exists", null);
+        }
+
+        const [inserted] = await transaction
+          .insert(usersTable)
+          .values({
+            name,
+            username,
+            email,
+            passwordHash,
+            address,
+            country,
+            isPrivate,
+            bio,
+          })
+          .returning({
+            id: usersTable.id,
+            username: usersTable.username,
+            email: usersTable.email,
+          });
+
+        return inserted;
+      } catch (error) {
+        throw new HttpError(401, "Invalid user", {});
       }
-
-      const [inserted] = await transaction
-        .insert(usersTable)
-        .values({
-          name,
-          username,
-          email,
-          passwordHash,
-          address,
-          country,
-          isPrivate,
-          bio,
-        })
-        .returning({
-          id: usersTable.id,
-          username: usersTable.username,
-          email: usersTable.email,
-        });
-
-      return inserted;
     });
 
     return response

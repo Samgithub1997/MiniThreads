@@ -1,11 +1,11 @@
 {
-  "id": "a6a972d5-e3a7-4cae-9a4b-e726f080b1bb",
+  "id": "bdf37065-18ee-441f-ac1a-5b90f8d9e8b5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.usersTable": {
-      "name": "usersTable",
+    "public.users": {
+      "name": "users",
       "schema": "",
       "columns": {
         "id": {
@@ -74,10 +74,11 @@
           "name": "display_picture_url",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "''"
         },
-        "account_status": {
-          "name": "account_status",
+        "accountStatus": {
+          "name": "accountStatus",
           "type": "account_status",
           "typeSchema": "public",
           "primaryKey": false,
@@ -134,8 +135,8 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "usersTable_username_unique": {
-          "name": "usersTable_username_unique",
+        "users_username_unique": {
+          "name": "users_username_unique",
           "nullsNotDistinct": false,
           "columns": [
             "username"

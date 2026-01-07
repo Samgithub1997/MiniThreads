@@ -6,7 +6,7 @@ export function createApp() {
   app.use(express.json());
 
   app.get("/health", async (req, res, next) => {
-    res.status(200).json({
+    return res.status(200).json({
       ok: true,
     });
   });
