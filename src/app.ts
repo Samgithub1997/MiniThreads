@@ -1,4 +1,5 @@
 import express from "express";
+import { authRouter } from "./routes/auth.routes";
 
 export function createApp() {
   const app = express();
@@ -9,6 +10,8 @@ export function createApp() {
       ok: true,
     });
   });
+
+  app.use("/v1/auth", authRouter);
 
   return app;
 }
