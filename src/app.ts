@@ -1,5 +1,6 @@
 import express from "express";
 import { authRouter } from "./routes/auth.routes";
+import { allUsersRouter } from "./routes/all-users.routes";
 
 export function createApp() {
   const app = express();
@@ -12,6 +13,7 @@ export function createApp() {
   });
 
   app.use("/v1/auth", authRouter);
+  app.use("/all-users", allUsersRouter);
 
   return app;
 }

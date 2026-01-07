@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Justin Case",
+    "username": "jcase_99",
+    "email": "justin.case@example.com",
+    "password": "PasswordIsTooShort",
+    "address": "123 Maple Leaf Dr, Toronto, ON",
+    "country": "Canada",
+    "isPrivate": false,
+    "bio": "Just here for the free healthcare and maple syrup."
+  },
+  {
+    "name": "Anita Bath",
+    "username": "clean_queen",
+    "email": "anita.bath@domain.eu",
+    "password": "BathtimeBeatsWorking",
+    "address": "45 Rue de la Paix, Paris",
+    "country": "France",
+    "isPrivate": true,
+    "bio": "Soap enthusiast and professional bubble blower."
+  },
+  {
+    "name": "Ben Dover",
+    "username": "bendy_ben",
+    "email": "ben.dover@usmail.com",
+    "password": "IHaveBackProblems",
+    "address": "742 Evergreen Terrace, Springfield, OR",
+    "country": "USA",
+    "isPrivate": false,
+    "bio": "Yoga instructor with a very unfortunate name."
+  },
+  {
+    "name": "Phil McCracken",
+    "username": "cement_mixer",
+    "email": "phil.m@uk-web.co.uk",
+    "password": "PavementIsMyLife",
+    "address": "10 Downing St (Next Door), London",
+    "country": "UK",
+    "isPrivate": true,
+    "bio": "Infrastructure is serious business. I am not."
+  },
+  {
+    "name": "Robin Banks",
+    "username": "not_a_thief",
+    "email": "robin.banks@germany.de",
+    "password": "GiveMeAllTheCookies",
+    "address": "Schlossstraße 1, Berlin",
+    "country": "Germany",
+    "isPrivate": false,
+    "bio": "I promise I'm just a librarian. Stop looking at me like that."
+  },
+  {
+    "name": "Sue Flay",
+    "username": "chef_sue",
+    "email": "sue.flay@canada.ca",
+    "password": "DontOpenTheOvenDoor",
+    "address": "888 Poutine Way, Montreal, QC",
+    "country": "Canada",
+    "isPrivate": true,
+    "bio": "Life is fragile, just like my dessert."
+  },
+  {
+    "name": "Will Power",
+    "username": "strong_will",
+    "email": "will.power@usa.net",
+    "password": "IHaveZeroWillPower",
+    "address": "500 Gym Rat Lane, Venice Beach, CA",
+    "country": "USA",
+    "isPrivate": false,
+    "bio": "Trying to eat a salad. Thinking about a burger."
+  },
+  {
+    "name": "Eileen Dover",
+    "username": "leaning_tower",
+    "email": "eileen@italy.it",
+    "password": "OneLegIsShorterThanTheOther",
+    "address": "Via dei Fori Imperiali, Rome",
+    "country": "Italy",
+    "isPrivate": false,
+    "bio": "Always looking for a stable foundation."
+  },
+  {
+    "name": "Otto Mobile",
+    "username": "vroom_vroom",
+    "email": "otto@carmail.de",
+    "password": "BeepBeepImALittleCar",
+    "address": "Autobahn Exit 4, Munich",
+    "country": "Germany",
+    "isPrivate": true,
+    "bio": "I identify as a 2004 Honda Civic."
+  },
+  {
+    "name": "Paige Turner",
+    "username": "book_worm_99",
+    "email": "paige@reads.com",
+    "password": "HarryPotterIsARealPerson",
+    "address": "221B Baker St, London",
+    "country": "UK",
+    "isPrivate": false,
+    "bio": "Literally just here to read your drama."
+  },
+  {
+    "name": "Chris P. Bacon",
+    "username": "breakfast_king",
+    "email": "chris.p@usafoods.com",
+    "password": "SizzlingAndDelicious",
+    "address": "123 Oink Blvd, Des Moines, IA",
+    "country": "USA",
+    "isPrivate": false,
+    "bio": "The most delicious man you'll ever meet."
+  },
+  {
+    "name": "Barry Cade",
+    "username": "roadblocker",
+    "email": "barry@traffic.be",
+    "password": "YouShallNotPass123",
+    "address": "Grote Markt 15, Brussels",
+    "country": "Belgium",
+    "isPrivate": true,
+    "bio": "Expert at being in the way since 1985."
+  },
+  {
+    "name": "Stan Dupp",
+    "username": "comedian_stan",
+    "email": "stan@funny.ca",
+    "password": "ThisIsMyStandUpRoutine",
+    "address": "99 Laugh Lane, Vancouver, BC",
+    "country": "Canada",
+    "isPrivate": false,
+    "bio": "I’m a stand-up comedian. Please laugh, I’m lonely."
+  },
+  {
+    "name": "Holly Wood",
+    "username": "star_born",
+    "email": "holly@star.com",
+    "password": "IAmFamousInMyOwnMind",
+    "address": "1600 Vine St, Los Angeles, CA",
+    "country": "USA",
+    "isPrivate": true,
+    "bio": "Currently waiting for my Oscar to arrive in the mail."
+  },
+  {
+    "name": "Juan Deagle",
+    "username": "one_tap",
+    "email": "juan@esports.es",
+    "password": "HeadshotsOnlyBro",
+    "address": "Calle Mayor, Madrid",
+    "country": "Spain",
+    "isPrivate": false,
+    "bio": "Professional gamer, casual human being."
+  },
+  {
+    "name": "Theresa Green",
+    "username": "tree_hugger",
+    "email": "theresa@garden.eu",
+    "password": "IOnlyTalkToPlants",
+    "address": "Greenhouse 4, Amsterdam",
+    "country": "Netherlands",
+    "isPrivate": false,
+    "bio": "The trees told me to join this app."
+  },
+  {
+    "name": "Joe King",
+    "username": "prankster_joe",
+    "email": "joe@haha.com",
+    "password": "DontTakeMeSeriously",
+    "address": "42 Wallaby Way, Sydney (jk I live in NY)",
+    "country": "USA",
+    "isPrivate": true,
+    "bio": "If you don't like my jokes, you're probably right."
+  },
+  {
+    "name": "Sven Eleven",
+    "username": "swedish_snack",
+    "email": "sven@ikea.se",
+    "password": "MeatballsAndFurniture",
+    "address": "Nordic Way 7, Stockholm",
+    "country": "Sweden",
+    "isPrivate": false,
+    "bio": "I am 50% coffee and 50% assembly instructions."
+  },
+  {
+    "name": "Barb Dwyer",
+    "username": "fence_builder",
+    "email": "barb@fences.com",
+    "password": "StayOffMyLawnPunk",
+    "address": "Rural Route 9, Texas",
+    "country": "USA",
+    "isPrivate": true,
+    "bio": "Keeping people out since the invention of wire."
+  },
+  {
+    "name": "Tim Burr",
+    "username": "lumberjack_tim",
+    "email": "tim@forest.ca",
+    "password": "FlannelIsAFashionStatement",
+    "address": "The Big Red Barn, Calgary, AB",
+    "country": "Canada",
+    "isPrivate": false,
+    "bio": "I sleep all night and I work all day."
+  }
+]

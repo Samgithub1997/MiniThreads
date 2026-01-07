@@ -11,7 +11,7 @@ CREATE TABLE "users" (
 	"is_verified" boolean DEFAULT false NOT NULL,
 	"bio" varchar(240),
 	"display_picture_url" text DEFAULT '',
-	"accountStatus" "account_status" DEFAULT 'active' NOT NULL,
+	"account_status" "account_status" DEFAULT 'active' NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now(),
 	"updated_at" timestamp with time zone DEFAULT now(),
 	CONSTRAINT "users_username_unique" UNIQUE("username")

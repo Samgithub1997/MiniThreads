@@ -30,7 +30,9 @@ authRouter.post(
         throw new HttpError(404, "User not found", null);
       }
 
-      if (password !== row.passwordHash) {
+      const isPasswordMatch = await bcrypt.compare(password, row?.passwordHash);
+
+      if (!isPasswordMatch) {
         throw new HttpError(401, "Invalid credentials", null);
       }
 
@@ -66,8 +68,8 @@ authRouter.post(
       bio,
     } = parsed.data;
 
-    // const passwordHash = await bcrypt.hash(password, 10);
-    const passwordHash = password;
+    const passwordHash = await bcrypt.hash(password, 10);
+    // const passwordHash = password;
 
     const newUser = await db.transaction(async (transaction) => {
       try {

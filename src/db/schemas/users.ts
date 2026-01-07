@@ -30,7 +30,9 @@ export const usersTable = pgTable(
     isVerified: boolean("is_verified").default(false).notNull(),
     bio: varchar("bio", { length: 240 }),
     displayPictureUrl: text("display_picture_url").default(""),
-    accountStatus: accountStatusEnum().default("active").notNull(),
+    accountStatus: accountStatusEnum("account_status")
+      .default("active")
+      .notNull(),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
   },
