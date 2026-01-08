@@ -6,7 +6,7 @@ import { usersTable } from "../db";
 import { eq, or } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 import { signJwt } from "../auth/jwt";
-import { loginSchema, signinSchema } from "./auth.validation";
+import { loginSchema, signinSchema } from "../validations/auth.validation";
 
 export const authRouter = Router();
 
@@ -27,10 +27,13 @@ authRouter.post(
         .limit(1);
 
       if (!row) {
-        throw new HttpError(404, "User not found", null);
+        throw new HttpError(404, "Invalid credentials", null);
       }
 
-      const isPasswordMatch = await bcrypt.compare(password, row?.passwordHash);
+      const isPasswordMatch = await bcrypt.compare(
+        password,
+        String(row?.passwordHash)
+      );
 
       if (!isPasswordMatch) {
         throw new HttpError(401, "Invalid credentials", null);
@@ -52,27 +55,28 @@ authRouter.post(
 
 authRouter.post(
   "/sign-in",
-  asyncHandler(async (request, response, next) => {
-    const parsed = signinSchema.safeParse(request.body);
-    if (!parsed.success) {
-      return new HttpError(400, "Bad Request", null);
-    }
-    const {
-      name,
-      username,
-      email,
-      password,
-      address,
-      country,
-      isPrivate,
-      bio,
-    } = parsed.data;
+  asyncHandler(
+    async (request: Request, response: Response, next: NextFunction) => {
+      const parsed = signinSchema.safeParse(request.body);
+      if (!parsed.success) {
+        return new HttpError(400, "Bad Request", parsed.error.flatten());
+      }
+      const {
+        name,
+        username,
+        email,
+        password,
+        address,
+        country,
+        isPrivate,
+        bio,
+      } = parsed.data;
 
-    const passwordHash = await bcrypt.hash(password, 10);
-    // const passwordHash = password;
+      const passwordHash = await bcrypt.hash(password, 10);
+      // const passwordHash = password;
 
-    const newUser = await db.transaction(async (transaction) => {
-      try {
+      const newUser = await db.transaction(async (transaction) => {
+        // check if user exists
         const userExists = await transaction
           .select()
           .from(usersTable)
@@ -85,6 +89,7 @@ authRouter.post(
           throw new HttpError(409, "User already exists", null);
         }
 
+        // Insert new user
         const [inserted] = await transaction
           .insert(usersTable)
           .values({
@@ -104,13 +109,11 @@ authRouter.post(
           });
 
         return inserted;
-      } catch (error) {
-        throw new HttpError(401, "Invalid user", {});
-      }
-    });
+      });
 
-    return response
-      .status(201)
-      .json({ message: "User created successfully", user: newUser });
-  })
+      return response
+        .status(201)
+        .json({ message: "User created successfully", user: newUser });
+    }
+  )
 );
