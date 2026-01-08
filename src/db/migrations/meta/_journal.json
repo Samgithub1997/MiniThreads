@@ -15,6 +15,13 @@
       "when": 1767859560653,
       "tag": "0001_salty_magma",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1767883769891,
+      "tag": "0002_neat_stephen_strange",
+      "breakpoints": true
     }
   ]
 }
