@@ -10,7 +10,6 @@ export const getPostsParamsSchema = z.object({
 });
 
 export const postPostsSchema = z.object({
-  authorId: z.coerce.number(),
   content: z.string().min(6).max(16384),
   isEdited: z.boolean().optional(),
 });

@@ -19,12 +19,15 @@ export function createApp() {
     }
   );
 
-  app.use("/v1/auth", authRouter);
-  app.use("/v1/posts", auth, postsRouter);
-  app.use("/v1/comments", auth, commentsRouter);
-
   // seed user endpoint
   app.use("/all-users", allUsersRouter);
+
+  // auth
+  app.use("/v1/auth", authRouter);
+
+  // Routes
+  app.use("/v1/posts", auth, postsRouter);
+  app.use("/v1/comments", auth, commentsRouter);
 
   app.use(errorMiddleware);
   return app;

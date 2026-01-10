@@ -78,7 +78,8 @@ postsRouter.post(
   asyncHandler(
     async (request: Request, response: Response, next: NextFunction) => {
       // No request params since user can only upload his post
-      if (!request.user?.userId) {
+      const authorId = request.user?.userId;
+      if (!authorId) {
         throw new HttpError(401, "Invalid credentials", null);
       }
 
@@ -87,7 +88,7 @@ postsRouter.post(
         throw new HttpError(400, "Bad request", null);
       }
 
-      const { authorId, content, isEdited = false } = parsed.data;
+      const { content, isEdited = false } = parsed.data;
 
       const [newPost] = await db
         .insert(postsTable)
