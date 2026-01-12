@@ -4,12 +4,35 @@ import z from "zod";
 import { HttpError } from "../middleware/errorMiddleware";
 import { db } from "../db/client";
 import { followersTable } from "../db";
+import { eq } from "drizzle-orm";
 
 export const followRouter = Router();
 
 export const followUserSchema = z.object({
   followeeId: z.coerce.number(),
 });
+
+// get followers list
+followRouter.get(
+  "/",
+  asyncHandler(
+    async (request: Request, response: Response, next: NextFunction) => {
+      const userId = request.user?.userId;
+      if (!userId) {
+        throw new HttpError(401, "Invalid credentials", {});
+      }
+      const following = await db
+        .select({
+          followeeId: followersTable.followeeId,
+          createdAt: followersTable.createdAt,
+        })
+        .from(followersTable)
+        .where(eq(followersTable.followerId, userId));
+
+      return response.status(200).json([...following]);
+    }
+  )
+);
 
 followRouter.post(
   "/",
