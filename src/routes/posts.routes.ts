@@ -2,6 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import { asyncHandler } from "../lib/async-handler";
 import { HttpError } from "../middleware/errorMiddleware";
 import {
+  deletePostParamsSchema,
   getPostsParamsSchema,
   getPostsQuerySchema,
   postPostsSchema,
@@ -138,6 +139,35 @@ postsRouter.patch(
 
       response.status(200).json({
         updatePost,
+      });
+    }
+  )
+);
+
+// deletes post
+postsRouter.delete(
+  "/:postId",
+  asyncHandler(
+    async (request: Request, response: Response, next: NextFunction) => {
+      const userId = request.user?.userId;
+      if (!userId) {
+        throw new HttpError(401, "Invalid credentials", {});
+      }
+
+      const parsedParams = deletePostParamsSchema.safeParse(request.params);
+      if (!parsedParams.success) {
+        throw new HttpError(400, "Bad request", {});
+      }
+
+      const { postId } = parsedParams.data;
+
+      const [deletedComment] = await db
+        .delete(postsTable)
+        .where(eq(postsTable.id, postId))
+        .returning();
+
+      return response.status(200).json({
+        deletedComment,
       });
     }
   )
