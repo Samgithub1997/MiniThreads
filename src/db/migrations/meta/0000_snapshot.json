@@ -1,5 +1,5 @@
 {
-  "id": "925f4e47-03ff-4a4a-9b1d-f70f2b67759c",
+  "id": "76543010-0d64-46a0-a5ef-c176634c5598",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -433,8 +433,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.followers-followee": {
-      "name": "followers-followee",
+    "public.follows": {
+      "name": "follows",
       "schema": "",
       "columns": {
         "follower_id": {
@@ -490,9 +490,9 @@
         }
       },
       "foreignKeys": {
-        "followers-followee_follower_id_users_id_fk": {
-          "name": "followers-followee_follower_id_users_id_fk",
-          "tableFrom": "followers-followee",
+        "follows_follower_id_users_id_fk": {
+          "name": "follows_follower_id_users_id_fk",
+          "tableFrom": "follows",
           "tableTo": "users",
           "columnsFrom": [
             "follower_id"
@@ -503,9 +503,9 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "followers-followee_followee_id_users_id_fk": {
-          "name": "followers-followee_followee_id_users_id_fk",
-          "tableFrom": "followers-followee",
+        "follows_followee_id_users_id_fk": {
+          "name": "follows_followee_id_users_id_fk",
+          "tableFrom": "follows",
           "tableTo": "users",
           "columnsFrom": [
             "followee_id"
@@ -518,8 +518,8 @@
         }
       },
       "compositePrimaryKeys": {
-        "followers-followee_follower_id_followee_id_pk": {
-          "name": "followers-followee_follower_id_followee_id_pk",
+        "follows_follower_id_followee_id_pk": {
+          "name": "follows_follower_id_followee_id_pk",
           "columns": [
             "follower_id",
             "followee_id"

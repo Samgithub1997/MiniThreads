@@ -3,7 +3,7 @@ import { usersTable } from "./users";
 import { bigint, primaryKey, index, timestamp } from "drizzle-orm/pg-core";
 
 export const followersTable = pgTable(
-  "followers-followee",
+  "follows",
   {
     followerId: bigint("follower_id", { mode: "number" })
       .notNull()

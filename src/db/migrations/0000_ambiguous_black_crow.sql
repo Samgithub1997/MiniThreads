@@ -38,11 +38,11 @@ CREATE TABLE "posts" (
 	"updated_at" timestamp with time zone DEFAULT now()
 );
 --> statement-breakpoint
-CREATE TABLE "followers-followee" (
+CREATE TABLE "follows" (
 	"follower_id" bigint NOT NULL,
 	"followee_id" bigint NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now(),
-	CONSTRAINT "followers-followee_follower_id_followee_id_pk" PRIMARY KEY("follower_id","followee_id")
+	CONSTRAINT "follows_follower_id_followee_id_pk" PRIMARY KEY("follower_id","followee_id")
 );
 --> statement-breakpoint
 ALTER TABLE "comments" ADD CONSTRAINT "comments_post_id_posts_id_fk" FOREIGN KEY ("post_id") REFERENCES "public"."posts"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
@@ -50,8 +50,8 @@ ALTER TABLE "comments" ADD CONSTRAINT "comments_author_id_users_id_fk" FOREIGN K
 ALTER TABLE "comments" ADD CONSTRAINT "comments_parent_comment_id_comments_id_fk" FOREIGN KEY ("parent_comment_id") REFERENCES "public"."comments"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "posts" ADD CONSTRAINT "posts_author_id_users_id_fk" FOREIGN KEY ("author_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE cascade;--> statement-breakpoint
 ALTER TABLE "posts" ADD CONSTRAINT "posts_author_username_users_username_fk" FOREIGN KEY ("author_username") REFERENCES "public"."users"("username") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "followers-followee" ADD CONSTRAINT "followers-followee_follower_id_users_id_fk" FOREIGN KEY ("follower_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "followers-followee" ADD CONSTRAINT "followers-followee_followee_id_users_id_fk" FOREIGN KEY ("followee_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "follows" ADD CONSTRAINT "follows_follower_id_users_id_fk" FOREIGN KEY ("follower_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "follows" ADD CONSTRAINT "follows_followee_id_users_id_fk" FOREIGN KEY ("followee_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 CREATE UNIQUE INDEX "username_idx" ON "users" USING btree ("username");--> statement-breakpoint
 CREATE UNIQUE INDEX "emaid_idx" ON "users" USING btree ("email");--> statement-breakpoint
 CREATE INDEX "comments_post_created_idx" ON "comments" USING btree ("post_id","created_at");--> statement-breakpoint
@@ -59,5 +59,5 @@ CREATE INDEX "comments_parent_created_idx" ON "comments" USING btree ("parent_co
 CREATE INDEX "comments_author_created_idx" ON "comments" USING btree ("author_id","created_at");--> statement-breakpoint
 CREATE INDEX "posts_author_created_idx" ON "posts" USING btree ("author_id");--> statement-breakpoint
 CREATE INDEX "posts_created_idx" ON "posts" USING btree ("created_at");--> statement-breakpoint
-CREATE INDEX "follower_idx" ON "followers-followee" USING btree ("follower_id");--> statement-breakpoint
-CREATE INDEX "followee_idx" ON "followers-followee" USING btree ("followee_id");
+CREATE INDEX "follower_idx" ON "follows" USING btree ("follower_id");--> statement-breakpoint
+CREATE INDEX "followee_idx" ON "follows" USING btree ("followee_id");
