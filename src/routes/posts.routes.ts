@@ -16,9 +16,11 @@ import z from "zod";
 
 export const postsRouter = Router();
 
+// TND : GET /v1/posts/:postId = a single post
+
 // Get posts of a particular user
 postsRouter.get(
-  "/:id",
+  "/:id/posts",
   asyncHandler(
     async (request: Request, response: Response, next: NextFunction) => {
       /* 
